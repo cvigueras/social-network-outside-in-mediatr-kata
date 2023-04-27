@@ -17,7 +17,7 @@ namespace SocialNetwork.Api.Messages
             await _connection.ExecuteAsync($"INSERT INTO Messages(Author, Post, Timestamp) VALUES('{message.Author}', '{message.Post}', '{message.Timestamp:O}')");
         }
 
-        public Task<IEnumerable<Message>> GetByAuthor(string author)
+        public Task<IEnumerable<Message>> GetByAuthor(string? author)
         {
             return _connection.QueryAsync<Message>($"SELECT Author, Post, Timestamp FROM Messages WHERE Author = '{author}' ORDER BY Timestamp DESC");
         }
