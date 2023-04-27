@@ -19,12 +19,12 @@ public class MessagesController : ControllerBase
     [HttpGet("{author}")]
     public Task<IEnumerable<Message>> Get(string? author)
     {
-        return _sender.Send(new GetMessagesByAuthorQuery(author), default);
+        return _sender.Send(new GetMessagesByAuthorQuery(author));
     }
 
     [HttpPost("{author}")]
     public Task Post(string author, MessageDto messageDto)
     {
-        return _sender.Send(new CreateMessageCommand(messageDto, author), default);
+        return _sender.Send(new CreateMessageCommand(messageDto, author));
     }
 }
