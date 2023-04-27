@@ -26,7 +26,7 @@ namespace SocialNetwork.Api
             services.AddSwaggerGen();
             
             DataBase.Create();
-
+            services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(typeof(Program).Assembly));
             services.AddScoped(_ => new SQLiteConnection("Data Source=./SocialNetwork.db"));
             services.AddScoped<IMessagesRepository, MessageRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
