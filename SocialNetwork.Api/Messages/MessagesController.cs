@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SocialNetwork.Api.Messages.Queries;
 using SocialNetwork.Api.Time;
 
@@ -9,15 +8,11 @@ namespace SocialNetwork.Api.Messages;
 [Route("[controller]")]
 public class MessagesController : ControllerBase
 {
-    private readonly IMessagesRepository _messagesRepository;
-    private readonly ITime _time;
     private readonly GetMessagesByAuthorQueryHandler _getMessagesByAuthorQueryHandler;
     private readonly CreateMessageCommandHandler _createMessageCommandHandler;
 
     public MessagesController(IMessagesRepository messagesRepository, ITime time)
     {
-        _messagesRepository = messagesRepository;
-        _time = time;
         _getMessagesByAuthorQueryHandler = new GetMessagesByAuthorQueryHandler(messagesRepository);
         _createMessageCommandHandler = new CreateMessageCommandHandler(messagesRepository, time);
     }
