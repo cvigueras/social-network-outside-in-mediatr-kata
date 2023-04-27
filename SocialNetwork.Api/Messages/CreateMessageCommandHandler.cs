@@ -1,8 +1,9 @@
-﻿using SocialNetwork.Api.Time;
+﻿using MediatR;
+using SocialNetwork.Api.Time;
 
 namespace SocialNetwork.Api.Messages;
 
-public class CreateMessageCommandHandler
+public class CreateMessageCommandHandler : IRequestHandler<CreateMessageCommand>
 {
     private readonly IMessagesRepository _messagesRepository;
     private readonly ITime _time;
@@ -14,14 +15,14 @@ public class CreateMessageCommandHandler
         _time = time;
     }
 
-    public Task Handle(string author, MessageDto messageDto)
+    public Task Handle(CreateMessageCommand request, CancellationToken cancellationToken)
     {
         _messagesRepository.Add(
             new Message
             {
                 Timestamp = _time.Timestamp(),
-                Post = messageDto.Post,
-                Author = author,
+                Post = request.MessageDto.Post,
+                Author = request.Author,
             }
         );
         return Task.CompletedTask;

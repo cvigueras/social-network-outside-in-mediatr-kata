@@ -31,6 +31,6 @@ public class MessagesController : ControllerBase
     [HttpPost("{author}")]
     public Task Post(string author, MessageDto messageDto)
     {
-        return _createMessageCommandHandler.Handle(author, messageDto);
+        return _createMessageCommandHandler.Handle(new CreateMessageCommand(messageDto, author), default);
     }
 }
