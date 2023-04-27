@@ -1,0 +1,17 @@
+﻿[
+  {
+    "timestamp": "2023-04-18T14:48:00",
+    "author": "Alice",
+    "post": "Hello everyone"
+  },
+  {
+    "timestamp": "2023-04-18T14:38:00",
+    "author": "Alice",
+    "post": "I am new user"
+  },
+  {
+    "timestamp": "2023-04-18T14:35:00",
+    "author": "Alice",
+    "post": "Hello world"
+  }
+]

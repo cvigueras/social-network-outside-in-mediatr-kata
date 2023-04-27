@@ -1,0 +1,32 @@
+﻿[
+  {
+    "date": "2023-04-26",
+    "temperatureC": 46,
+    "temperatureF": 114,
+    "summary": "Mild"
+  },
+  {
+    "date": "2023-04-27",
+    "temperatureC": 54,
+    "temperatureF": 129,
+    "summary": "Sweltering"
+  },
+  {
+    "date": "2023-04-28",
+    "temperatureC": -15,
+    "temperatureF": 6,
+    "summary": "Warm"
+  },
+  {
+    "date": "2023-04-29",
+    "temperatureC": 49,
+    "temperatureF": 120,
+    "summary": "Bracing"
+  },
+  {
+    "date": "2023-04-30",
+    "temperatureC": 53,
+    "temperatureF": 127,
+    "summary": "Bracing"
+  }
+]
