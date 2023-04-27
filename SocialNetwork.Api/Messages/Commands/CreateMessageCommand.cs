@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace SocialNetwork.Api.Messages;
+namespace SocialNetwork.Api.Messages.Commands;
 
 public class CreateMessageCommand : IRequest
 {

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SocialNetwork.Api.Time;
 
-namespace SocialNetwork.Api.Messages;
+namespace SocialNetwork.Api.Messages.Commands;
 
 public class CreateMessageCommandHandler : IRequestHandler<CreateMessageCommand>
 {
