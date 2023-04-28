@@ -2,14 +2,15 @@
 using NSubstitute;
 using NSubstitute.ClearExtensions;
 using SocialNetwork.Api.Messages;
+using SocialNetwork.Api.Messages.Queries;
 using SocialNetwork.Api.Time;
 
 namespace SocialNetwork.Test.Messages
 {
-    public class WallShould
+    public class GetWallByAuthorQueryHandlerShould
     {
-        private WallController _wallController;
         private IMessagesRepository _messagesRepository;
+        private GetWallByAuthorQueryHandler _getWallByAuthorQueryHandler;
         private ITime _time;
 
 
@@ -17,7 +18,7 @@ namespace SocialNetwork.Test.Messages
         public void SetUp()
         {
             _messagesRepository = Substitute.For<IMessagesRepository>();
-            _wallController = new WallController(_messagesRepository);
+            _getWallByAuthorQueryHandler = new GetWallByAuthorQueryHandler(_messagesRepository);
             _time = Substitute.For<ITime>();
         }
 
@@ -27,7 +28,8 @@ namespace SocialNetwork.Test.Messages
             var givenMessage = Enumerable.Empty<Message>();
             _messagesRepository.GetByAuthorAndSubscriptions("Alice").Returns(givenMessage);
 
-            var result = await _wallController.Get("Alice");
+            var getWallByAuthorQuery = new GetWallByAuthorQuery("Alice");
+            var result = await _getWallByAuthorQueryHandler.Handle(getWallByAuthorQuery,default);
 
             result.Should().BeEmpty();
         }
@@ -46,8 +48,9 @@ namespace SocialNetwork.Test.Messages
             };
 
             _messagesRepository.GetByAuthorAndSubscriptions("Alice").Returns(givenMessage);
+            var getWallByAuthorQuery = new GetWallByAuthorQuery("Alice");
+            var result = await _getWallByAuthorQueryHandler.Handle(getWallByAuthorQuery, default);
 
-            var result = await _messagesRepository.GetByAuthorAndSubscriptions("Alice");
             result.Should().BeEquivalentTo(givenMessage);
         }
     }
