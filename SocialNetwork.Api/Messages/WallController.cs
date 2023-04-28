@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using SocialNetwork.Api.Messages.Queries;
 
 namespace SocialNetwork.Api.Messages;
@@ -7,18 +8,16 @@ namespace SocialNetwork.Api.Messages;
 [Route("[controller]")]
 public class WallController : ControllerBase
 {
-    private readonly IMessagesRepository _messagesRepository;
-    private readonly GetWallByAuthorQueryHandler _getWallByAuthorQueryHandler;
+    private readonly ISender _sender;
 
-    public WallController(IMessagesRepository messagesRepository)
+    public WallController(ISender sender)
     {
-        _messagesRepository = messagesRepository;
-        _getWallByAuthorQueryHandler = new GetWallByAuthorQueryHandler(messagesRepository);
+        _sender = sender;
     }
 
     [HttpGet ("{user}")]
     public async Task<IEnumerable<Message>> Get(string user)
     {
-        return await _getWallByAuthorQueryHandler.Handle(new GetWallByAuthorQuery(user),default);
+        return await _sender.Send(new GetWallByAuthorQuery(user));
     }
 }
