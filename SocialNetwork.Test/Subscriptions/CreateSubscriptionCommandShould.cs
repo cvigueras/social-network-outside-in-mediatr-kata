@@ -1,16 +1,19 @@
 ﻿using NSubstitute;
 using SocialNetwork.Api.Subscriptions;
+using SocialNetwork.Api.Subscriptions.Commands;
 
 namespace SocialNetwork.Test.Subscriptions
 {
-    public class SubscriptionsControllerShould
+    public class CreateSubscriptionCommandShould
     {
         private ISubscriptionRepository _subscriptionRepository;
+        private CreateSubscriptionCommandHandler _commandHandler;
 
         [SetUp]
         public void SetUp()
         {
             _subscriptionRepository = Substitute.For<ISubscriptionRepository>();
+            _commandHandler = new CreateSubscriptionCommandHandler(_subscriptionRepository);
         }
 
         [Test]
@@ -21,8 +24,8 @@ namespace SocialNetwork.Test.Subscriptions
                 Subscriber = "Charlie",
             };
 
-            var subscriptionController = new SubscriptionsController(_subscriptionRepository);
-            subscriptionController.Post("Alice", givenSubscription);
+            var subscriptionMessageCommand = new CreateSubscriptionCommand("Alice", givenSubscription);
+            _commandHandler.Handle(subscriptionMessageCommand, default);
 
             var expectedSubscription = new Subscription
             {
