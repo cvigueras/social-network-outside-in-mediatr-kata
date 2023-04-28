@@ -1,6 +1,9 @@
-﻿namespace SocialNetwork.Api.Subscriptions.Commands;
+﻿using MediatR;
+using SocialNetwork.Api.Messages.Commands;
 
-public class CreateSubscriptionCommandHandler
+namespace SocialNetwork.Api.Subscriptions.Commands;
+
+public class CreateSubscriptionCommandHandler :IRequestHandler<CreateSubscriptionCommand>
 {
     private readonly ISubscriptionRepository _subscriptionRepository;
 
@@ -9,12 +12,12 @@ public class CreateSubscriptionCommandHandler
         _subscriptionRepository = subscriptionRepository;
     }
 
-    public Task Handle(string user, SubscriptionDto subscriptionDto)
+    public Task Handle(CreateSubscriptionCommand request, CancellationToken cancellationToken)
     {
         var subscription = new Subscription
         {
-            User = user,
-            Subscriber = subscriptionDto.Subscriber,
+            User = request.User,
+            Subscriber = request.SubscriptionDto!.Subscriber,
         };
 
         _subscriptionRepository.Add(subscription);

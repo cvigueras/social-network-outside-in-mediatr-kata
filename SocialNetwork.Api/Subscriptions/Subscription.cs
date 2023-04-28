@@ -20,6 +20,6 @@ public class Subscription
         return HashCode.Combine(User, Subscriber);
     }
 
-    public string User { get; set; }
+    public string? User { get; set; }
     public string? Subscriber { get; set; }
 }

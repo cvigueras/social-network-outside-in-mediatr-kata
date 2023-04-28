@@ -19,6 +19,6 @@ public class SubscriptionsController : ControllerBase
     [HttpPost("{user}")]
     public Task Post(string user, SubscriptionDto subscriptionDto)
     {
-        return _createSubscriptionCommandHandler.Handle(user, subscriptionDto);
+        return _createSubscriptionCommandHandler.Handle(new CreateSubscriptionCommand(user,subscriptionDto), default);
     }
 }
