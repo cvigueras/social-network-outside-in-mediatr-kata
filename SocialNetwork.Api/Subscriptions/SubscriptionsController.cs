@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using SocialNetwork.Api.Subscriptions.Commands;
 
 namespace SocialNetwork.Api.Subscriptions;
@@ -7,18 +8,16 @@ namespace SocialNetwork.Api.Subscriptions;
 [Route("[controller]")]
 public class SubscriptionsController : ControllerBase
 {
-    private readonly ISubscriptionRepository _subscriptionRepository;
-    private readonly CreateSubscriptionCommandHandler _createSubscriptionCommandHandler;
+    private readonly ISender _sender;
 
-    public SubscriptionsController(ISubscriptionRepository subscriptionRepository)
+    public SubscriptionsController(ISender sender)
     {
-        _subscriptionRepository = subscriptionRepository;
-        _createSubscriptionCommandHandler = new CreateSubscriptionCommandHandler(_subscriptionRepository);
+        _sender = sender;
     }
 
     [HttpPost("{user}")]
     public Task Post(string user, SubscriptionDto subscriptionDto)
     {
-        return _createSubscriptionCommandHandler.Handle(new CreateSubscriptionCommand(user,subscriptionDto), default);
+        return _sender.Send(new CreateSubscriptionCommand(user,subscriptionDto));
     }
 }
