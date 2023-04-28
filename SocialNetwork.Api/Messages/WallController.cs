@@ -16,9 +16,9 @@ public class WallController : ControllerBase
         _getWallByAuthorQueryHandler = new GetWallByAuthorQueryHandler(messagesRepository);
     }
 
-    [HttpGet ("{author}")]
-    public async Task<IEnumerable<Message>> Get(string author)
+    [HttpGet ("{user}")]
+    public async Task<IEnumerable<Message>> Get(string user)
     {
-        return await _getWallByAuthorQueryHandler.Handle(author);
+        return await _getWallByAuthorQueryHandler.Handle(new GetWallByAuthorQuery(user),default);
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace SocialNetwork.Api.Messages.Queries;
+﻿using MediatR;
 
-public class GetWallByAuthorQueryHandler
+namespace SocialNetwork.Api.Messages.Queries;
+
+public class GetWallByAuthorQueryHandler : IRequestHandler<GetWallByAuthorQuery, IEnumerable<Message>>
 {
     private readonly IMessagesRepository _messagesRepository;
 
@@ -9,8 +11,9 @@ public class GetWallByAuthorQueryHandler
         _messagesRepository = messagesRepository;
     }
 
-    public async Task<IEnumerable<Message>> Handle(string author)
+
+    public Task<IEnumerable<Message>> Handle(GetWallByAuthorQuery request, CancellationToken cancellationToken)
     {
-        return await _messagesRepository.GetByAuthorAndSubscriptions(author);
+        return _messagesRepository.GetByAuthorAndSubscriptions(request.User);
     }
 }
