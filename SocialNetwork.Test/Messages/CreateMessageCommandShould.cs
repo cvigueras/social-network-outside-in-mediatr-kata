@@ -38,7 +38,7 @@ namespace SocialNetwork.Test.Messages
                 Post = "Hello everyone",
                 Author = "Alice",
             };
-            _messagesRepository.Received().Add(expectedMessage);
+            await _messagesRepository.Received().Add(expectedMessage);
         }
     }
 }
