@@ -1,7 +1,8 @@
 ﻿using Dapper;
+using SocialNetwork.Api.Subscriptions.Models;
 using System.Data.SQLite;
 
-namespace SocialNetwork.Api.Subscriptions;
+namespace SocialNetwork.Api.Subscriptions.Repositories;
 
 public class SubscriptionRepository : ISubscriptionRepository
 {

@@ -1,4 +1,4 @@
-﻿namespace SocialNetwork.Api.Subscriptions;
+﻿namespace SocialNetwork.Api.Subscriptions.Models;
 
 public class SubscriptionDto
 {

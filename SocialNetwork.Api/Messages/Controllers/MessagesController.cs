@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SocialNetwork.Api.Messages.Commands;
+using SocialNetwork.Api.Messages.Models;
 using SocialNetwork.Api.Messages.Queries;
 
-namespace SocialNetwork.Api.Messages;
+namespace SocialNetwork.Api.Messages.Controllers;
 
 [ApiController]
 [Route("[controller]")]

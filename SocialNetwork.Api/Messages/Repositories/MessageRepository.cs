@@ -1,7 +1,8 @@
-﻿using System.Data.SQLite;
-using Dapper;
+﻿using Dapper;
+using SocialNetwork.Api.Messages.Models;
+using System.Data.SQLite;
 
-namespace SocialNetwork.Api.Messages
+namespace SocialNetwork.Api.Messages.Repositories
 {
     public class MessageRepository : IMessagesRepository
     {

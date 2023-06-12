@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SocialNetwork.Api;
-using SocialNetwork.Api.Messages;
-using SocialNetwork.Api.Subscriptions;
-using System.Data.SQLite;
+using SocialNetwork.Api.Messages.Repositories;
+using SocialNetwork.Api.Subscriptions.Repositories;
 using SocialNetwork.Api.Time;
+using System.Data.SQLite;
 
 namespace SocialNetwork.Test
 {
-    public class StartupTest: WebApplicationFactory<Program>
+    public class StartupTest : WebApplicationFactory<Program>
     {
         private readonly ITime _time;
         private readonly SQLiteConnection _sqLiteConnection;

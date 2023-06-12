@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using NSubstitute;
-using NSubstitute.ClearExtensions;
-using SocialNetwork.Api.Messages;
+using SocialNetwork.Api.Messages.Models;
 using SocialNetwork.Api.Messages.Queries;
+using SocialNetwork.Api.Messages.Repositories;
 using SocialNetwork.Api.Time;
 
 namespace SocialNetwork.Test.Messages
@@ -29,7 +29,7 @@ namespace SocialNetwork.Test.Messages
             _messagesRepository.GetByAuthorAndSubscriptions("Alice").Returns(givenMessage);
 
             var getWallByAuthorQuery = new GetWallByAuthorQuery("Alice");
-            var result = await _getWallByAuthorQueryHandler.Handle(getWallByAuthorQuery,default);
+            var result = await _getWallByAuthorQueryHandler.Handle(getWallByAuthorQuery, default);
 
             result.Should().BeEmpty();
         }

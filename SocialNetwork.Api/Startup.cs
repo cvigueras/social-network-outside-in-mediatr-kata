@@ -1,8 +1,8 @@
-﻿using System.Data.SQLite;
-using SocialNetwork.Api.Data;
-using SocialNetwork.Api.Messages;
-using SocialNetwork.Api.Subscriptions;
+﻿using SocialNetwork.Api.Data;
+using SocialNetwork.Api.Messages.Repositories;
+using SocialNetwork.Api.Subscriptions.Repositories;
 using SocialNetwork.Api.Time;
+using System.Data.SQLite;
 
 namespace SocialNetwork.Api
 {
@@ -23,7 +23,7 @@ namespace SocialNetwork.Api
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
-            
+
             DataBase.Create();
             services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(typeof(Program).Assembly));
             services.AddScoped(_ => new SQLiteConnection("Data Source=./SocialNetwork.db"));

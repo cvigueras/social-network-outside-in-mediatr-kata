@@ -1,6 +1,7 @@
 ﻿using NSubstitute;
-using SocialNetwork.Api.Subscriptions;
 using SocialNetwork.Api.Subscriptions.Commands;
+using SocialNetwork.Api.Subscriptions.Models;
+using SocialNetwork.Api.Subscriptions.Repositories;
 
 namespace SocialNetwork.Test.Subscriptions
 {

@@ -1,8 +1,8 @@
 ﻿using NSubstitute;
-using SocialNetwork.Api.Messages.Queries;
-using SocialNetwork.Api.Messages;
-using SocialNetwork.Api.Time;
 using SocialNetwork.Api.Messages.Commands;
+using SocialNetwork.Api.Messages.Models;
+using SocialNetwork.Api.Messages.Repositories;
+using SocialNetwork.Api.Time;
 
 namespace SocialNetwork.Test.Messages
 {

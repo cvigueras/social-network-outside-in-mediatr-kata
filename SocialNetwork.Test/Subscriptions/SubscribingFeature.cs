@@ -1,7 +1,7 @@
-﻿using NSubstitute;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using NSubstitute;
 using SocialNetwork.Api.Time;
+using System.Text;
 
 namespace SocialNetwork.Test.Subscriptions
 {

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using SocialNetwork.Api.Messages.Models;
 
 namespace SocialNetwork.Api.Messages.Queries;
 

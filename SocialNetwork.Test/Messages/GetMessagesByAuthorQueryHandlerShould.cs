@@ -1,8 +1,9 @@
 ﻿using FluentAssertions;
 using NSubstitute;
-using SocialNetwork.Api.Messages;
 using SocialNetwork.Api.Messages.Commands;
+using SocialNetwork.Api.Messages.Models;
 using SocialNetwork.Api.Messages.Queries;
+using SocialNetwork.Api.Messages.Repositories;
 using SocialNetwork.Api.Time;
 
 namespace SocialNetwork.Test.Messages
@@ -11,7 +12,6 @@ namespace SocialNetwork.Test.Messages
     {
         private IMessagesRepository _messagesRepository;
         private GetMessagesByAuthorQueryHandler _getMessagesByAuthorQueryHandler;
-        private CreateMessageCommandHandler _createMessageCommandHandler;
         private ITime _time;
 
         [SetUp]
@@ -20,7 +20,7 @@ namespace SocialNetwork.Test.Messages
             _time = Substitute.For<ITime>();
             _messagesRepository = Substitute.For<IMessagesRepository>();
             _getMessagesByAuthorQueryHandler = new GetMessagesByAuthorQueryHandler(_messagesRepository);
-            _createMessageCommandHandler = new CreateMessageCommandHandler(_messagesRepository, _time);
+            new CreateMessageCommandHandler(_messagesRepository, _time);
         }
 
         [Test]

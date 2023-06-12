@@ -1,9 +1,10 @@
 ﻿using MediatR;
-using SocialNetwork.Api.Messages.Commands;
+using SocialNetwork.Api.Subscriptions.Models;
+using SocialNetwork.Api.Subscriptions.Repositories;
 
 namespace SocialNetwork.Api.Subscriptions.Commands;
 
-public class CreateSubscriptionCommandHandler :IRequestHandler<CreateSubscriptionCommand>
+public class CreateSubscriptionCommandHandler : IRequestHandler<CreateSubscriptionCommand>
 {
     private readonly ISubscriptionRepository _subscriptionRepository;
 

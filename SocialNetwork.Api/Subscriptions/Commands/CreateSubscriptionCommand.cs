@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using SocialNetwork.Api.Subscriptions.Models;
 
 namespace SocialNetwork.Api.Subscriptions.Commands;
 

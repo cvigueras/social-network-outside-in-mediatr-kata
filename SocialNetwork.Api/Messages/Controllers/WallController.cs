@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SocialNetwork.Api.Messages.Models;
 using SocialNetwork.Api.Messages.Queries;
 
-namespace SocialNetwork.Api.Messages;
+namespace SocialNetwork.Api.Messages.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -15,7 +16,7 @@ public class WallController : ControllerBase
         _sender = sender;
     }
 
-    [HttpGet ("{user}")]
+    [HttpGet("{user}")]
     public async Task<IEnumerable<Message>> Get(string user)
     {
         return await _sender.Send(new GetWallByAuthorQuery(user));

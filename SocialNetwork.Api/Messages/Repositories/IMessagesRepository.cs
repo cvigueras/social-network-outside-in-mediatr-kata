@@ -1,4 +1,6 @@
-﻿namespace SocialNetwork.Api.Messages;
+﻿using SocialNetwork.Api.Messages.Models;
+
+namespace SocialNetwork.Api.Messages.Repositories;
 
 public interface IMessagesRepository
 {

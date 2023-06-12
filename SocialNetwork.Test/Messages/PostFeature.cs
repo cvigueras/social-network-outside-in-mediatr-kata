@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using NSubstitute;
-using System.Text;
 using SocialNetwork.Api.Time;
+using System.Text;
 
 namespace SocialNetwork.Test.Messages
 {
